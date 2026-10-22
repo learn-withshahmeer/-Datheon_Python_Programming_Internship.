@@ -1,29 +1,33 @@
-# Hangman Word Guessing Game (Console)
+# Stock Portfolio Performance Tracker (Console)
 
-A terminal-based Hangman game written in Python 3 using only the standard library.
+A Python 3 utility that tracks an investment portfolio and logs a summary to a CSV file.
 
 ## Features
-- Random word picked from `words.txt` (falls back to built-in words if the file is missing)
-- 6 wrong attempts allowed
-- ASCII gallows art that updates after every wrong guess
-- Shows the masked word (e.g. `_ A _ H E O N`) and all guessed letters
-- Repeated guesses do not cost an attempt
-- Win / game over screens and a play-again option
+- Enter ticker symbols, buy price and number of shares
+- Ticker symbols are validated against the S&P 500 dataset (`sp500.csv`)
+- Buying the same stock twice merges into one position with an average buy price
+- Current prices: live via `yfinance` (optional) or typed in manually
+- Calculates invested capital, current value, gain/loss in $ and % per holding, and totals
+- Formatted console report
+- Every run is appended to `portfolio_summary.csv` (with date/time and a TOTAL row)
 
 ## How to run
 1. Install Python 3
-2. Keep `hangman.py` and `words.txt` in the same folder
+2. Keep `portfolio.py` and `sp500.csv` in the same folder
 3. Run:
 
 ```
-python hangman.py
+python portfolio.py
 ```
+
+Optional, for live prices: `pip install yfinance`
 
 ## Files
 | File | Description |
 |------|-------------|
-| `hangman.py` | The game |
-| `words.txt` | English word list (one word per line) |
+| `portfolio.py` | The program |
+| `sp500.csv` | S&P 500 ticker dataset (symbol, company, sector, ...) |
+| `portfolio_summary.csv` | Generated log of portfolio summaries |
 
 ## Concepts used
-String manipulation, loops, sets, functions, file handling, `random.choice()`, input validation.
+Dictionaries, functions, loops, input validation, `csv` module (read + write/append), file I/O, f-string formatting, `datetime`.
